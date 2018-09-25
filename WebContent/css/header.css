@@ -1,0 +1,16 @@
+.navbar-nav a{
+	color: white !important;
+	
+}
+.navbar-nav a:focus{
+	color: white !important;
+	
+}
+.dropdown-menu a{
+	color: black !important;
+}
+nav.navbar.navbar-default div.container-fluid div#bs-example-navbar-collapse-1.collapse.navbar-collapse ul.nav.navbar-nav li.dropdown.open a:focus{
+	background-color: #66b3ff;
+}
+/*重构bootstrap框架内的一些默认属性*/
+

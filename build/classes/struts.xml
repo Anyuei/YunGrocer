@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<!-- 
+		name: 全局唯一
+		extends=struts-default :  保证可以使用struts2框架的功能
+	 -->
+	<package name="p1" extends="struts-default">
+		<!-- 
+			一对action标签，代表了一个action实现类的配置，一个package下可以写多个action标签
+			name: 相当于servlet的url-pattern配置， 是用户请求的路径一部分，值没有斜杠开始
+				name值全局唯一
+			class: action实现类全限定名
+			访问：
+				http://localhost:8989/Struts2Day1/myAction
+		 -->
+		 <!--添加购物车  -->
+		<action name="CartAddAction" class="com.YunGrocer.servlet.CartAction" method="cartAdd">
+            <result name="notLogin" type="redirect">/Login.jsp</result>
+			<result name="addSuccess" type="chain">YunGrocer</result>
+		</action>
+		<!--删除购物车物品-->
+		<action name="CartDeleteAction" class="com.YunGrocer.servlet.CartAction" method="cardDelete">
+			<result name="deleteSuccess">/myCart.jsp</result>
+		</action>
+		<!--查找所有商品-->
+		<action name="YunGrocer" class="com.YunGrocer.servlet.CartAction" method="findAll">
+			<result name="findSuccess">/index.jsp</result>
+		</action>
+		
+		<!--查找所有商品根据名字-->
+		<action name="FindByName" class="com.YunGrocer.servlet.FindByName">
+			<!-- 
+				result标签配置跳转的实际视图，可以书写多个
+				name:属性与action 实现类返回值匹配
+				标签体： 跳转的实际视图， 斜杠代表从项目的根开始(WebRoot)
+			 -->
+			<result name="findByNameSuccess">/index.jsp</result>
+		</action>
+		<!--查找所有商品根据价格区间-->
+		<action name="FindByPriceRange" class="com.YunGrocer.servlet.FindByPriceRange">
+			<!-- 
+				result标签配置跳转的实际视图，可以书写多个
+				name:属性与action 实现类返回值匹配
+				标签体： 跳转的实际视图， 斜杠代表从项目的根开始(WebRoot)
+			 -->
+			<result name="findByPriceRangeSuccess">/index.jsp</result>
+		</action>
+		
+		<action name="Login" class="com.YunGrocer.servlet.Login">
+			<result name="loginSuccess" type="redirect">YunGrocer</result>
+			<result name="loginFail" type="redirect">/Login.jsp</result>
+		</action>
+		
+		<action name="LogOut" class="com.YunGrocer.servlet.LogOut">
+			<!-- 
+				result标签配置跳转的实际视图，可以书写多个
+				name:属性与action 实现类返回值匹配
+				标签体： 跳转的实际视图， 斜杠代表从项目的根开始(WebRoot)
+			 -->
+			<result name="loginFail" type="redirect">/Login.jsp</result>
+		</action>
+		<action name="Register" class="com.YunGrocer.servlet.Register">
+			<!-- 
+				result标签配置跳转的实际视图，可以书写多个
+				name:属性与action 实现类返回值匹配
+				标签体： 跳转的实际视图， 斜杠代表从项目的根开始(WebRoot)
+			 -->
+			<result name="RegisterFail" type="redirect">/Register.jsp</result>
+			<result name="RegisterSuccess">/index.jsp</result>
+		</action>
+		<action name="ShowMyCart" class="com.YunGrocer.servlet.ShowMyCart">
+			<!-- 
+				result标签配置跳转的实际视图，可以书写多个
+				name:属性与action 实现类返回值匹配
+				标签体： 跳转的实际视图， 斜杠代表从项目的根开始(WebRoot)
+			 -->
+			<result name="showMyCart">/myCart.jsp</result>
+		</action>
+		
+		
+	</package>
+   
+
+</struts>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
