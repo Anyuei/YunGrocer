@@ -16,7 +16,9 @@
 		<%@ include file="/header.jsp" %>
 		<!--主体部分  -->
 		<c:set var="searchMessage" value="&productName=${productName}&lowPrice=${lowPrice}&highPrice=${highPrice}" scope="session"></c:set>
-		
+			<include file="struts-cartOpera.xml"></include>
+	<include file="struts-goodsOpera.xml"></include>
+	<include file="struts-userLoginOrOut.xml"></include>
 		<div class="container">
 			<br>
 			<br>

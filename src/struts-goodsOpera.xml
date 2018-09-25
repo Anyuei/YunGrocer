@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	
+	<!-- 
+		name: 全局唯一
+		extends=struts-default :  保证可以使用struts2框架的功能
+	 -->
+	<package name="goods" extends="struts-default">
+		<!--查找所有商品-->
+		<action name="YunGrocer" class="com.YunGrocer.servlet.CartAction" method="findAll">
+			<result name="findSuccess">/index.jsp</result>
+		</action>
+	
+		<!--查找所有商品根据名字-->
+		<action name="FindByName" class="com.YunGrocer.servlet.FindByName">
+			<result name="findByNameSuccess">/index.jsp</result>
+		</action>
+		
+		<!--查找所有商品根据价格区间-->
+		<action name="FindByPriceRange" class="com.YunGrocer.servlet.FindByPriceRange">
+			<result name="findByPriceRangeSuccess">/index.jsp</result>
+		</action>
+	</package>
+</struts>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

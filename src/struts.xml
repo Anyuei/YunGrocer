@@ -4,7 +4,9 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
-	
+	<!--  			<include file="struts-cartOpera.xml"></include>
+	<include file="struts-goodsOpera.xml"></include>
+	<include file="struts-userLoginOrOut.xml"></include>-->
 	<!-- 
 		name: 全局唯一
 		extends=struts-default :  保证可以使用struts2框架的功能
@@ -30,7 +32,7 @@
 				http://localhost:8989/Struts2Day1/myAction
 		 -->
 		 <!-- 通用拦截器 -->
-		 <global-results>
+		<global-results>
 		 	<result name="notLogin">/Login.jsp</result>
 		 </global-results>
 		 <!--添加购物车  -->
