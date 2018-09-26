@@ -1,5 +1,5 @@
 package interceptor;
-import com.opensymphony.xwork2.ActionContext;
+
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.util.ValueStack;
 /**
@@ -13,13 +13,14 @@ public class ForceLoginInterceptor extends DestoryAndInitInterceptor{
 	 * 检查本次会话的用户名是否为空
 	 */
 	public String intercept(ActionInvocation ai) throws Exception {
-		ValueStack vs = ActionContext.getContext().getValueStack();
+		ValueStack vs = ai.getStack();
 		Object usernameLog = vs.findValue("#session.usernameLog");
+		System.out.println("拦截器已经运行");
 		if (usernameLog == null) {
 			return "notLogin";//未登录
 		} else {
 			ai.invoke();
-			return "isLogin";//已经登录
+			return null;//已经登录
 		}
 	}
 }

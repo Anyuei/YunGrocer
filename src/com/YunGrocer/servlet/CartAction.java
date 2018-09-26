@@ -36,12 +36,10 @@ public class CartAction extends ActionSupport{
 	public String cartAdd() {
 		HttpServletRequest request = ServletActionContext.getRequest();
 		HttpSession session =request.getSession();
-		if (session.getAttribute("usernameLog") == null) {
-			return "notLogin";
-		}
+
 		// 查找产品
 		ProductService ps = new ProductServiceImpl();
-		System.out.println("productId"+productId);
+
 		Product product = ps.findById(productId);
 		// 获取购物车
 		Map<Integer, CartItem> cart = (Map<Integer, CartItem>) session.getAttribute("cart");
@@ -58,6 +56,7 @@ public class CartAction extends ActionSupport{
 				cartItem.setAmount(cartItem.getAmount() + 1);
 				cartItem.setTotalPrice(product.getPrice() * cartItem.getAmount());
 			} else {
+				System.out.println("产品信息"+product);
 				cartItem = new CartItem(product, 1, product.getPrice() * 1);
 				cart.put(productId, cartItem);
 			}

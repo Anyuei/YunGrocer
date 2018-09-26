@@ -16,9 +16,7 @@
 		<%@ include file="/header.jsp" %>
 		<!--主体部分  -->
 		<c:set var="searchMessage" value="&productName=${productName}&lowPrice=${lowPrice}&highPrice=${highPrice}" scope="session"></c:set>
-			<include file="struts-cartOpera.xml"></include>
-	<include file="struts-goodsOpera.xml"></include>
-	<include file="struts-userLoginOrOut.xml"></include>
+
 		<div class="container">
 			<br>
 			<br>
@@ -43,7 +41,7 @@
 									<div align="center"><s:property value="price"/>
 									</div>
 									<div align="center">
-										<a href='${pageContext.request.contextPath}/admin/CartAddAction?productId=<s:property value="id"/>'>添加购物车</a>
+										<a href='${pageContext.request.contextPath}/admin/CartAction?productId=<s:property value="id"/>'>添加购物车</a>
 									</div>
 									
 								</div>
