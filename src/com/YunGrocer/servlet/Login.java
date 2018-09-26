@@ -1,6 +1,7 @@
 package com.YunGrocer.servlet;
 
 import java.io.IOException;
+import java.net.URLEncoder;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
@@ -15,6 +16,8 @@ import com.YunGrocer.javabeans.YGUser;
 import com.YunGrocer.service.UserServiceImpl;
 import com.google.code.kaptcha.Constants;
 import com.opensymphony.xwork2.Action;
+
+import utils.MD5Utils;
 
 /**
  * Servlet implementation class Login
@@ -34,11 +37,13 @@ public class Login implements Action {
 			String username = request.getParameter("username");
 			// 获取密码
 			String password = request.getParameter("password");
+			String encryptpassword = new MD5Utils().getStringMD5(password);
+			System.out.println(encryptpassword);
 			// 获取是否记住用户名和密码
 			String rememberMe = request.getParameter("rememberMe");
 
 			// 调用service层login方法
-			YGUser user = new UserServiceImpl().login(username, password);
+			YGUser user = new UserServiceImpl().login(username, encryptpassword);
 			// 判断用户名密码是否正确，或验证码是否正确
 			if (user == null || !session.getAttribute(Constants.KAPTCHA_SESSION_KEY).equals(kaptcha)) {
 				return "loginFail";
@@ -46,14 +51,15 @@ public class Login implements Action {
 				// 登录成功且记住我被选中时，记住用户名和密码
 
 				if (rememberMe != null) {
-					Cookie usernameCookie = new Cookie("username", username);
+					Cookie usernameCookie = new Cookie("username", URLEncoder.encode(username, "UTF-8"));
 					Cookie passwordCookie = new Cookie("password", password);
 					usernameCookie.setMaxAge(60 * 60 * 24);
 					passwordCookie.setMaxAge(60 * 60 * 24);
 					response.addCookie(usernameCookie);
 					response.addCookie(passwordCookie);
 				} else {
-					Cookie usernameCookie = new Cookie("username", username);
+					
+					Cookie usernameCookie = new Cookie("username", URLEncoder.encode(username, "UTF-8"));
 					Cookie passwordCookie = new Cookie("password", password);
 					usernameCookie.setMaxAge(0);
 					passwordCookie.setMaxAge(0);
@@ -65,12 +71,8 @@ public class Login implements Action {
 				Cookie usernameWelcome = new Cookie("usernameWelcome", username);
 				response.addCookie(usernameWelcome);
 				session.setAttribute("usernameLog", username);
-
-				System.out.println(rememberMe + "00000");
 				// 设置当前页面号
 				session.setAttribute("currentPage", "1");
-				// 设置用户名密码
-				session.setAttribute(username, password);
 				session.setAttribute("flag", session);
 				return "loginSuccess";
 

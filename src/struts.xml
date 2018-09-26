@@ -76,7 +76,7 @@
 		<!-- 注册 -->
 		<action name="Register" class="com.YunGrocer.servlet.Register">
 			<result name="RegisterFail" type="redirect">/Register.jsp</result>
-			<result name="RegisterSuccess">/index.jsp</result>
+			<result name="RegisterSuccess" type="redirectAction">YunGrocer</result>
 		</action>
 		
 		<!-- 查看购物车 -->
