@@ -9,6 +9,7 @@ import com.YunGrocer.dao.ProductDaoImpl;
 import com.YunGrocer.javabeans.Product;
 
 import utils.JdbcUtil3;
+import utils.MybatisUtil;
 
 
 public class ProductServiceImpl implements ProductService{
@@ -43,25 +44,15 @@ public class ProductServiceImpl implements ProductService{
 	}
 
 	public Product findById(Integer productId) {
-		Connection conn = null;
 		try{
-			conn = JdbcUtil3.getConn();
-			conn.setAutoCommit(false);
-			ProductDao dao = new ProductDaoImpl();
+			ProductDao dao = MybatisUtil.getMapper(ProductDao.class);
 			Product p = dao.queryById(productId);
-			conn.commit();
 			return p;
 		}catch(Exception e){
-			try {
-				conn.rollback();
-			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
 			e.printStackTrace();
 			throw new RuntimeException("²Ù×÷Ê§°Ü");
 		}finally{
-			JdbcUtil3.close(conn);
+			MybatisUtil.close();
 		}
 	}
 	/**

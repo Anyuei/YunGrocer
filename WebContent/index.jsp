@@ -20,7 +20,7 @@
 		<div class="container">
 			<br>
 			<br>
-			<h2>云购商城欢迎您${sessionScope.usernameLog}！！</h2>
+			<h2>云购商城欢迎您<s:property value="#session.username"/>！！</h2>
 			<br>
 			<br>
 			<br>

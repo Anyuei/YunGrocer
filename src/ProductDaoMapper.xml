@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.YunGrocer.dao.ProductDao">
+<!-- 	<select id="queryByPage" resultType="com.YunGrocer.javabeans.Product">
+		
+	</select> -->
+	<select id="queryById" resultType="com.YunGrocer.javabeans.Product">
+		select * from YG_product where id=#{id}
+	</select>
+<!-- 	<select id="queryByPriceRange" resultType="com.YunGrocer.javabeans.Product">
+		<if test="lowPrice==null and highPrice==null">
+			select * from (select sp.*,rownum rn from 
+			(select * from YG_product where productName like '%'||#{productName}||'%')sp) where rn>=#{begin} and rn<=#{end}
+		</if>
+	</select> -->
+</mapper>

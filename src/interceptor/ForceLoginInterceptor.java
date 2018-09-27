@@ -14,7 +14,8 @@ public class ForceLoginInterceptor extends DestoryAndInitInterceptor{
 	 */
 	public String intercept(ActionInvocation ai) throws Exception {
 		ValueStack vs = ai.getStack();
-		Object usernameLog = vs.findValue("#session.usernameLog");
+		Object usernameLog = vs.findValue("#session.username");
+		System.out.println(usernameLog);
 		System.out.println("拦截器已经运行");
 		if (usernameLog == null) {
 			return "notLogin";//未登录

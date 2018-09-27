@@ -39,7 +39,7 @@
 			<interceptor-ref name="myStack"></interceptor-ref>
 			
             <result name="notLogin" type="redirect">/Login.jsp</result>
-			<result name="addSuccess" type="redirectAction">YunGrocer</result>
+			<result name="addSuccess" type="chain">YunGrocer</result>
 		</action>
 		
 		<!--删除购物车物品-->
@@ -63,7 +63,7 @@
 		</action>
 		
 		<!-- 登录 -->
-		<action name="Login" class="com.YunGrocer.servlet.Login">
+		<action name="Login" class="com.YunGrocer.servlet.Login" method="login">
 			<result name="loginSuccess" type="redirect">YunGrocer</result>
 			<result name="loginFail" type="redirect">/Login.jsp</result>
 		</action>

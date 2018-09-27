@@ -20,6 +20,7 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	public YGUser queryByUsernameAndPassword(String username, String password) {
+		System.out.println(password);
 		YGUser user = jte.executeQueryOne("select * from YG_user where username=? and password=?", new UserMapper(),
 				username, password);
 		System.out.println(user);

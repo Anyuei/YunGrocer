@@ -90,9 +90,9 @@ public class CartAction extends ActionSupport{
 		}
 		HttpServletRequest request = ServletActionContext.getRequest();
 		List<Product> products = null;
-		if (request.getAttribute("currentPage")==null) {                                                                                                         
+/*		if (request.getAttribute("currentPage")==null) {                                                                                                         
 			request.setAttribute("currentPage", 1);
-		}
+		}*/
 		try {
 			products = new ProductServiceImpl().findProduct(currentPage,
 					productName, null,

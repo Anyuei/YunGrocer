@@ -28,7 +28,7 @@ public class Register implements Action{
 			return "RegisterFail";
 		} else {//不存在的时候注册新的用户
 			new UserServiceImpl().regist(new YGUser(username, encryptpassword, realname, Integer.parseInt(zip), address));
-			session.setAttribute("usernameLog", username);
+			session.setAttribute("username", username);
 			return "RegisterSuccess";
 		}
 	}
