@@ -14,8 +14,8 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	public void updateUser(YGUser user) {
-		jte.executeUpdate("update YG_user set username=?,password=?,name=?,zip=?,address=? where username=?",
-				user.getUsername(), user.getPassword(), user.getName(), user.getZip(), user.getAddress(),
+		jte.executeUpdate("update YG_user set username=?,password=?,name=?,zip=?,address=?,tel=? where username=?",
+				user.getUsername(), user.getPassword(), user.getName(), user.getZip(), user.getAddress(),user.getTel(),
 				user.getUsername());
 	}
 

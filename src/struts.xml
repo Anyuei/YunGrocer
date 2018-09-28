@@ -87,6 +87,10 @@
 		<action name="MyGro" class="com.YunGrocer.servlet.MyGro" method="myGroInfo">
 			<result name="myGro">/MyGro.jsp</result>
 		</action>
+		<!-- 修改个人信息 -->
+		<action name="ModifyMyGro" class="com.YunGrocer.servlet.MyGro" method="modifyMyGro">
+			<result name="myGro">/MyGro.jsp</result>
+		</action>
 	</package>
 </struts>
 
