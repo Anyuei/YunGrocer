@@ -83,6 +83,10 @@
 		<action name="ShowMyCart" class="com.YunGrocer.servlet.ShowMyCart">
 			<result name="showMyCart">/myCart.jsp</result>
 		</action>
+		<!--查看个人信息  -->
+		<action name="MyGro" class="com.YunGrocer.servlet.MyGro" method="myGroInfo">
+			<result name="myGro">/MyGro.jsp</result>
+		</action>
 	</package>
 </struts>
 

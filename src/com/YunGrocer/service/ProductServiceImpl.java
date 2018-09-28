@@ -45,7 +45,9 @@ public class ProductServiceImpl implements ProductService{
 
 	public Product findById(Integer productId) {
 		try{
+			//通过MybatisUtil工具类获取 dao
 			ProductDao dao = MybatisUtil.getMapper(ProductDao.class);
+			//使用dao 根据id 查询产品 
 			Product p = dao.queryById(productId);
 			return p;
 		}catch(Exception e){

@@ -18,7 +18,7 @@
 		<script type="text/javascript" src="${pageContext.request.contextPath}/lib/bootstrap/js/holder.min.js"></script>
 	</head>
 	<style>
-		<c:if test="${sessionScope.usernameLog==null}"> body {
+		<c:if test="${sessionScope.username==null}"> body {
 			background-image: url(image/loginOut.jpg);
 			no-repeat;
 			-webkit-background-size: cover;
@@ -32,7 +32,7 @@
 			font-family: 'microsoft yahei', Arial, sans-serif;
 		}
 		
-		</c:if> <c:if test="${sessionScope.usernameLog!=null}">body {
+		</c:if> <c:if test="${sessionScope.username!=null}">body {
 			background-image: url(image/login.jpg);
 			no-repeat;
 			-webkit-background-size: cover;
@@ -153,13 +153,15 @@
 						</button>
 					</form>
 					<ul class="nav navbar-nav navbar-right">
-						<c:if test="${sessionScope.usernameLog!=null}">
+						<c:if test="${sessionScope.username!=null}">
+							<li>
+								<a href="${pageContext.request.contextPath}/MyGro?username=${sessionScope.username}" target="_blank">个人信息</a>
+							</li>
 							<li>
 								<a href="${pageContext.request.contextPath}/LogOut" target="_blank">注销</a>
 							</li>
-
 						</c:if>
-						<c:if test="${sessionScope.usernameLog==null}">
+						<c:if test="${sessionScope.username==null}">
 							<li>
 								<a href="${pageContext.request.contextPath}/Login.jsp" target="_blank">欢迎登录</a>
 							</li>

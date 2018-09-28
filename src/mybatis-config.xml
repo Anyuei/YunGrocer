@@ -10,7 +10,7 @@
 				<property name="username" value="hr"/>
 				<property name="password" value="000000"/>
 			</dataSource>
-		</environment>
+		</environment>   
 	</environments>
 	<mappers>
 		<mapper resource="ProductDaoMapper.xml"></mapper>

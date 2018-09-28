@@ -68,6 +68,19 @@
 									We'll never share your realname with anyone else.
 									</small>
 							</div>
+							<!-- tel --> 
+							<div class="form-group">
+								<label for="tel">电话</label> 
+								<input type="text"
+									class="form-control" 
+									
+									placeholder="请输入电话号码" 
+									name="tel"
+									required="required"> 
+									<small class="form-text text-muted">
+									We'll never share your telephone with anyone else.
+									</small>
+							</div>
 							<!--zipcode  -->
 							<div class="form-group">
 								<label for="zipcode">邮编（6位数字）</label> 

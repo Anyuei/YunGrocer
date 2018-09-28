@@ -12,5 +12,5 @@
 			select * from (select sp.*,rownum rn from 
 			(select * from YG_product where productName like '%'||#{productName}||'%')sp) where rn>=#{begin} and rn<=#{end}
 		</if>
-	</select> -->
+	</select>  -->
 </mapper>

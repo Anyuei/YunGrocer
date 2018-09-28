@@ -36,6 +36,7 @@ public class CartAction extends ActionSupport{
 	public String cartAdd() {
 		HttpServletRequest request = ServletActionContext.getRequest();
 		HttpSession session =request.getSession();
+		
 
 		// 查找产品
 		ProductService ps = new ProductServiceImpl();
@@ -80,6 +81,10 @@ public class CartAction extends ActionSupport{
 		return "deleteSuccess";
 	}
 	public String findAll(){
+		HttpServletRequest request = ServletActionContext.getRequest();
+		System.out.println("客户端mac地址为"+request.getRemoteAddr());
+		System.out.println("客户端ip地址为"+request.getRemoteHost());
+		
 		Integer results=0;
 		Integer pages=0;
 		if (currentPage==null) {
@@ -88,7 +93,7 @@ public class CartAction extends ActionSupport{
 		if (productName==null) {
 			productName="";
 		}
-		HttpServletRequest request = ServletActionContext.getRequest();
+		
 		List<Product> products = null;
 /*		if (request.getAttribute("currentPage")==null) {                                                                                                         
 			request.setAttribute("currentPage", 1);

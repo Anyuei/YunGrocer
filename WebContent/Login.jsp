@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -15,6 +15,19 @@
 <body>
 	<!--网站头部  -->
 	<%@ include file="/header.jsp"%>
+	<%!String usernameCookie = "请输入用户名"; %>
+		<% 		
+			Cookie[] cookies = request.getCookies();
+			for(int i = 0 ; i < cookies.length ; i++){	
+				if(cookies[i].getName().equals("usernameCookie")){
+					usernameCookie = cookies[i].getValue();			
+					break;
+				}		
+			}	
+			
+		%>
+
+
 	<%-- <jsp:include page='/jsp/header.jsp'></jsp:include> --%>
 	<!--登录页面  -->
 	<div class="container">
@@ -40,8 +53,8 @@
 							method="post">
 							<div class="form-group">
 								<label for="username">用户名</label> <input type="text"
-									class="form-control" value='${cookie.username.value}'
-									placeholder="请输入用户名" name="username" required="required">
+									class="form-control" value='${param.usernameCookie}'
+									placeholder="请输入用户名" name="username" required="required" >
 
 							</div>
 							<div class="form-group">
@@ -59,8 +72,8 @@
 							</div>
 							<div class="form-check">
 								<input type="checkbox" class="form-check-input"
-									id="exampleCheck1"> <label class="form-check-label"
-									for="exampleCheck1">Check me out</label>
+									id="exampleCheck1" name="rememberMe"> <label class="form-check-label"
+									for="exampleCheck1">记住用户名和密码</label>
 
 							</div>
 							<button type="submit" class="btn btn-primary" value="登陆">登录</button>

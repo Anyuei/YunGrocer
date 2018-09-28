@@ -59,9 +59,11 @@ public class Login extends ActionSupport {
 				}
 				Cookie passwordCookie = new Cookie("password", password);
 				if (rememberMe != null) {
+					System.out.println("用户名和密码的cookie已生成");
 					usernameCookie.setMaxAge(60 * 60 * 24);
 					passwordCookie.setMaxAge(60 * 60 * 24);
 				} else {
+					System.out.println("用户名和密码的cookie已清除");
 					usernameCookie.setMaxAge(0);
 					passwordCookie.setMaxAge(0);
 				}

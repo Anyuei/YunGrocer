@@ -9,8 +9,8 @@ public class UserDaoImpl implements UserDao {
 	private JdbcTemplate jte = new JdbcTemplate();
 
 	public void addUser(YGUser user) {
-		jte.executeUpdate("insert into YG_user values(?,?,?,?,?)", user.getUsername(), user.getPassword(),
-				user.getName(), user.getZip(), user.getAddress());
+		jte.executeUpdate("insert into YG_user values(?,?,?,?,?,?,?)", user.getUsername(), user.getPassword(),
+				user.getName(), user.getZip(), user.getAddress(),user.getAvatarPath(),user.getTel());
 	}
 
 	public void updateUser(YGUser user) {
@@ -29,7 +29,7 @@ public class UserDaoImpl implements UserDao {
 	public YGUser queryByUsername(String username) {
 		YGUser user = jte.executeQueryOne("select * from YG_user where username=?", new UserMapper(),
 				username);
-		System.out.println(user);
+		System.out.println("根据username查询的用户信息"+user);
 		return user;
 	}
 

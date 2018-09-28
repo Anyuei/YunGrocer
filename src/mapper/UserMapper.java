@@ -15,7 +15,9 @@ public class UserMapper implements RowMapper<YGUser>{
 						rs.getString(2),
 						rs.getString(3),
 						rs.getInt(4),
-						rs.getString(5)
+						rs.getString(5),
+						rs.getString(6),
+						rs.getString(7)
 					);
 			return user;
 		}catch(Exception e){

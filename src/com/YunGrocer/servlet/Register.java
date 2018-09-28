@@ -22,12 +22,14 @@ public class Register implements Action{
 		String realname = request.getParameter("realname");
 		String zip = request.getParameter("zipcode");
 		String address = request.getParameter("address");
+		String avatarPath = request.getParameter("avatarPath");
+		String tel = request.getParameter("tel");
 		//如果用户名已经存在，重定向去注册页面
 		if (new UserServiceImpl().findByName(username)!= null) {
 			request.getSession().setAttribute("registerError", "用户名已被使用");
 			return "RegisterFail";
 		} else {//不存在的时候注册新的用户
-			new UserServiceImpl().regist(new YGUser(username, encryptpassword, realname, Integer.parseInt(zip), address));
+			new UserServiceImpl().regist(new YGUser(username, encryptpassword, realname, Integer.parseInt(zip), address,avatarPath,tel));
 			session.setAttribute("username", username);
 			return "RegisterSuccess";
 		}
