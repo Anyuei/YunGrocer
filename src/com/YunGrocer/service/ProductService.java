@@ -6,8 +6,6 @@ import com.YunGrocer.javabeans.Product;
 
 
 public interface ProductService {
-	List<Product> findProduct(Integer currentPage
-			,String productName,String lessOrGreat,Double price);
 	/**
 	 * 根据商品id查询
 	 * @param productId

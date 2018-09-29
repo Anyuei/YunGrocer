@@ -1,16 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- 用于操作ProductDao的sql语句映射 -->
 <mapper namespace="com.YunGrocer.dao.ProductDao">
-<!-- 	<select id="queryByPage" resultType="com.YunGrocer.javabeans.Product">
-		
-	</select> -->
+	<!-- 根据商品id查询商品信息 -->
 	<select id="queryById" resultType="com.YunGrocer.javabeans.Product">
-		select * from YG_product where id=#{id}
+		select * from YG_product where id=#{productId}
 	</select>
-<!-- 	<select id="queryByPriceRange" resultType="com.YunGrocer.javabeans.Product">
-		<if test="lowPrice==null and highPrice==null">
-			select * from (select sp.*,rownum rn from 
-			(select * from YG_product where productName like '%'||#{productName}||'%')sp) where rn>=#{begin} and rn<=#{end}
-		</if>
-	</select>  -->
+	<!-- 根据价格区间 查询某商品 -->
+	<select id="queryByPriceRange" resultType="com.YunGrocer.javabeans.Product">
+		select * from (select sp.*,rownum rn from 
+			(select * from YG_product
+			<trim prefix ="where" prefixOverrides="and">
+			<!-- 查询所有 -->
+				<if test="lowPrice==null and highPrice==null">
+					productName like '%'||#{productName}||'%')sp) 
+				</if>
+				<!-- 查询低于某价格的 -->
+				<if test="lowPrice==null and highPrice!=null">
+					productName like '%'||#{productName}||'%' and price&lt;=#{highPrice})sp)
+				</if>
+				<!-- 查询在价格在某个区间内的 -->
+				<if test="lowPrice!=null and highPrice!=null">
+					productName like '%'||#{productName}||'%' and price>=#{lowPrice} and price&lt;=#{highPrice})sp)
+				</if>
+				<!-- 查询价格高于多少的 -->
+				<if test="lowPrice!=null and highPrice==null">
+					productName like '%'||#{productName}||'%' and price&gt;=#{lowPrice})sp)
+				</if>
+			</trim>
+			<!-- 根据当前页面分页返回结果集 begin 和 and 由当前页面算出 -->
+			where rn&gt;=#{begin} and rn&lt;=#{end}
+	</select>
+	<!-- 根据价格区间 查询某商品 的数量-->
+	<select id="queryByPriceRangeCount" resultType="Integer">
+		select max(rownum) from YG_product
+			<trim prefix ="where" prefixOverrides="and">
+			<!-- 查询所有 -->
+				<if test="lowPrice==null and highPrice==null">
+					productName like '%'||#{productName}||'%'
+				</if>
+				<!-- 查询低于某价格的 -->
+				<if test="lowPrice==null and highPrice!=null">
+					productName like '%'||#{productName}||'%' and price&lt;=#{highPrice}
+				</if>
+				<!-- 查询在价格在某个区间内的 -->
+				<if test="lowPrice!=null and highPrice!=null">
+					productName like '%'||#{productName}||'%' price>=#{lowPrice} and price&lt;=#{highPrice}
+				</if>
+				<!-- 查询价格高于多少的 -->
+				<if test="lowPrice!=null and highPrice==null">
+					productName like '%'||#{productName}||'%' and price&gt;=#{lowPrice}
+				</if>
+			</trim>
+	</select>
+	
 </mapper>

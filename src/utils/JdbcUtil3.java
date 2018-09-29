@@ -33,7 +33,8 @@ public class JdbcUtil3 {
 	}
 	// 创建一个ThreadLocal对象， 将Connection绑定到当前线程
 	private static ThreadLocal<Connection> tol = new ThreadLocal<Connection>();
-
+	
+	//获取数据库连接，与数据库开启会话。
 	public static Connection getConn(){
 		try {
 			// 每一次调用， 先到当前线程获取一下
@@ -91,5 +92,4 @@ public class JdbcUtil3 {
 			throw new RuntimeException("释放资源错误！~");
 		}
 	}
-
 }

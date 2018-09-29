@@ -15,7 +15,7 @@
 		<div class="container">
 		<br>
 		<br>
-		<h2>个人信息</h2><h5><a href="">修改个人信息</a></h5>
+		<h2>个人信息</h2><h5><a href="${pageContext.request.contextPath}/ModifyMyGro.jsp">修改个人信息</a></h5>
 		<br>
 		<br>
 		<br>
@@ -23,7 +23,7 @@
 			<div class="span5 offsetHalf block" style="padding: 40px 30px 40px 30px; height: auto;">
 				<div class="row">
 					<!-- 个人信息 -->
-					<div class="col-md-8">
+					<div class="col-md-4">
 						<ul>
 							<li>昵称:<s:property value="#session.username"/></li><br>
 							<li>真实姓名:<s:property value="#request.name"/></li><br>
@@ -40,13 +40,22 @@
 							<a href="404.jsp">购物信息
 						</div>
 					</div>
+					<div class="col-md-4"></div>
 					<!-- 头像 -->
 					<div class="col-md-4">
 						<div id="avatar" style="height: 70%;">
 							<img src="image/defaultAvatar.jpg" style="width: 100%; bottom: 0px;" />
 						</div>
 						<!--训练文件上传下载-->
-						<div style="height: 70%;"><h5>修改头像</h5></div>
+						<div style="height: 70%;">
+									<form action="<s:url value="/file/simpleUpload"></s:url>" method="POST"
+										enctype="multipart/form-data">
+										Name:<input type="text" name="name" />
+										<input type="file" name="upload">
+										<input type="submit"  value="提交"/>
+									</form>
+							<a href="${pageContext.request.contextPath}/">修改头像</a>
+						</div>
 					</div>
 				</div>
 			</div>

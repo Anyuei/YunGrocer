@@ -15,6 +15,10 @@ public class MyGro extends ActionSupport{
 	private String address;
 	private String tel;
 	private Integer zip;
+	/**
+	 * 查看用户信息
+	 * @return
+	 */
 	public String myGroInfo() {
 		HttpServletRequest request = ServletActionContext.getRequest();
 		UserDaoImpl userDaoImpl = new UserDaoImpl();
@@ -27,6 +31,10 @@ public class MyGro extends ActionSupport{
 		request.setAttribute("tel", user.getTel());
 		return "myGro";
 	}
+	/**
+	 * 修改个人信息
+	 * @return
+	 */
 	public String modifyMyGro() {
 		HttpServletRequest request = ServletActionContext.getRequest();
 		UserDaoImpl userDaoImpl = new UserDaoImpl();
@@ -45,7 +53,15 @@ public class MyGro extends ActionSupport{
 		request.setAttribute("name", user.getName());
 		request.setAttribute("address", user.getAddress());
 		request.setAttribute("tel", user.getTel());
-		return "myGro";
+		return "modifyMyGro";
+	}
+	/**
+	 * 修改头像
+	 * @return
+	 */
+	public String changeAvatar() {
+		
+		return "changeAvatar";
 	}
 	public String getUsername() {
 		return username;

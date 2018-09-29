@@ -8,7 +8,9 @@ public class LogOut implements Action {
 	public String execute() throws Exception {
 		HttpServletRequest request = ServletActionContext.getRequest();
 		HttpSession session = request.getSession(false);
-		session.invalidate();
+		if (session!=null) {
+			session.invalidate();
+		}
 		return "loginFail";
 	}
 }

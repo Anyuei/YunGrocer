@@ -99,9 +99,7 @@ public class CartAction extends ActionSupport{
 			request.setAttribute("currentPage", 1);
 		}*/
 		try {
-			products = new ProductServiceImpl().findProduct(currentPage,
-					productName, null,
-					null);
+			products = new ProductServiceImpl().queryByPriceRange(productName, currentPage, lowPrice, highPrice);
 			results = new ProductServiceImpl().queryByPriceRangeCount(productName,lowPrice, highPrice);
 			System.out.println(request.getAttribute("currentPage"));
 		} catch (Exception e) {
