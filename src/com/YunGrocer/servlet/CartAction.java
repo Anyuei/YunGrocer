@@ -28,7 +28,7 @@ public class CartAction extends ActionSupport{
 	private String productName;
 	private Double lowPrice;
 	private Double highPrice;
-	
+	List<Product> products;
 	/**
 	 * 购物车添加
 	 * @return
@@ -84,7 +84,6 @@ public class CartAction extends ActionSupport{
 		HttpServletRequest request = ServletActionContext.getRequest();
 		System.out.println("客户端mac地址为"+request.getRemoteAddr());
 		System.out.println("客户端ip地址为"+request.getRemoteHost());
-		
 		Integer results=0;
 		Integer pages=0;
 		if (currentPage==null) {
@@ -93,25 +92,15 @@ public class CartAction extends ActionSupport{
 		if (productName==null) {
 			productName="";
 		}
-		
-		List<Product> products = null;
-/*		if (request.getAttribute("currentPage")==null) {                                                                                                         
-			request.setAttribute("currentPage", 1);
-		}*/
 		try {
 			products = new ProductServiceImpl().queryByPriceRange(productName, currentPage, lowPrice, highPrice);
 			results = new ProductServiceImpl().queryByPriceRangeCount(productName,lowPrice, highPrice);
 			System.out.println(request.getAttribute("currentPage"));
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-//		System.out.println(list.size());
-		System.out.println(results);
 		pages= (int) Math.ceil(1.0 * results / 3);
-		System.out.println("findALL"+pages);
         request.setAttribute("pages",pages);
-		request.setAttribute("products", products);
 		return "findSuccess";
 	}
 	public Integer getProductId() {
@@ -157,4 +146,11 @@ public class CartAction extends ActionSupport{
 	public void setCurrentPage(Integer currentPage) {
 		this.currentPage = currentPage;
 	}
+	public List<Product> getProducts() {
+		return products;
+	}
+	public void setProducts(List<Product> products) {
+		this.products = products;
+	}
+	
 }

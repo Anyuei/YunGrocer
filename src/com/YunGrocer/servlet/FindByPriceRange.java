@@ -23,24 +23,21 @@ public class FindByPriceRange implements Action  {
 	private Integer currentPage;
 	private Double lowPrice;
 	private Double highPrice;
-	
+	List<Product> products;
+
+
 	public String execute() throws Exception {
 		HttpServletRequest request = ServletActionContext.getRequest();
-		List<Product> products = null;
+
 		Integer results=0;
 		try {
 			products = new ProductServiceImpl().queryByPriceRange(productName, currentPage, lowPrice, highPrice); 
 			results = new ProductServiceImpl().queryByPriceRangeCount(productName,lowPrice, highPrice);
-			request.getSession().setAttribute("productName", productName);
-			request.getSession().setAttribute("currentPage", currentPage);
-			request.getSession().setAttribute("lowPrice", lowPrice);
-			request.getSession().setAttribute("highPrice", highPrice);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		System.out.println("结果集为"+results);
 		request.setAttribute("pages", (int) Math.ceil(1.0 * results / 3));
-		request.setAttribute("products", products);
 		return "findByPriceRangeSuccess";
 	}
 
@@ -76,5 +73,14 @@ public class FindByPriceRange implements Action  {
 	public void setHighPrice(Double highPrice) {
 		this.highPrice = highPrice;
 	}
+	public List<Product> getProducts() {
+		return products;
+	}
+
+
+	public void setProducts(List<Product> products) {
+		this.products = products;
+	}
+
 
 }

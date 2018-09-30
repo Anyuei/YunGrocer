@@ -12,6 +12,7 @@
 <body>
 		<!--网站头部  -->
 		<%@ include file="/header.jsp" %>
+		<!-- 个人信息查看 -->
 		<div class="container">
 		<br>
 		<br>
@@ -48,7 +49,8 @@
 						</div>
 						<!--训练文件上传下载-->
 						<div style="height: 70%;">
-									<form action="<s:url value="/file/simpleUpload"></s:url>" method="POST"
+						<!-- 修改头像 -->
+									<form action="<s:url value="/ChangeAvatar"></s:url>" method="POST"
 										enctype="multipart/form-data">
 										Name:<input type="text" name="name" />
 										<input type="file" name="upload">

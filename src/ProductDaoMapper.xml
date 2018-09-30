@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <!-- 用于操作ProductDao的sql语句映射 -->
 <mapper namespace="com.YunGrocer.dao.ProductDao">
+	<cache></cache>
 	<!-- 根据商品id查询商品信息 -->
 	<select id="queryById" resultType="com.YunGrocer.javabeans.Product">
 		select * from YG_product where id=#{productId}

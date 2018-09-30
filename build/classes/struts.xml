@@ -4,7 +4,8 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
-	
+    <!-- 配置struts2最大上传文件的大小 -->
+	<constant name="struts.multipart.maxSize" value="2147483648"></constant>
 	<!-- 
 		name: 全局唯一
 		extends=struts-default :  保证可以使用struts2框架的功能

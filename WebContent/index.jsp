@@ -30,10 +30,10 @@
 					<div align="center">
 						<h1>图书类</h1></div>
 					<div class="row">
-						<s:iterator value="#request.products">
+						<s:iterator value="#request.products" >
 
 							<div class="col-md-4">
-								<div align="center"><img src="${pageContext.request.contextPath}<s:property value=" picpath "/>" style="width: 50%;height: 225px;" /></div>
+								<div align="center"><img src="${pageContext.request.contextPath}<s:property value="picpath "/>" style="width: 50%;height: 225px;" /></div>
 								<div class="row" align="center">
 									<div><s:property value="id" />
 									</div>
